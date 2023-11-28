@@ -32,5 +32,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+
+      - uses: browser-actions/setup-chrome@latest
+        run: chrome --version
+
       - name: Test with selenium
         run: mvn test allure:report
