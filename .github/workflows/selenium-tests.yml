@@ -40,9 +40,9 @@ jobs:
         run: mvn test allure:report
 
       - uses: actions/upload-artifact@v3
-          with:
-            name: allure-report-artifact
-            path: target/allure-report
+        with:
+          name: allure-report-artifact
+          path: target/allure-report
 
   report:
 
