@@ -27,10 +27,6 @@ jobs:
     steps:
       - name: Test with selenium
         run: mvn test allure:report --file pom.xml
-        with:
-          allure_results: ./target/allure-results
-          allure_history: allure-history
-          keep_reports: 5
 
   report:
 
