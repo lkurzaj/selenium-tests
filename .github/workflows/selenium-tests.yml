@@ -37,7 +37,7 @@ jobs:
       - run: chrome --version
 
       - name: Test with selenium
-        run: mvn test allure:report
+        run: mvn test
 
   report:
 
