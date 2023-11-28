@@ -44,10 +44,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: explore
-      - run: ls
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - uses: actions/upload-artifact@v3
         with:
-          folder: target/site
+          name: allure-report-artifact
+          path: target/allure-report/
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          artifact_name: allure-report-artifact
