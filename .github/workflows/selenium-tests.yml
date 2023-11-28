@@ -38,3 +38,11 @@ jobs:
 
       - name: Test with selenium
         run: mvn test allure:report
+
+      - name: Allure report action
+      - uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: target/allure-results
+          allure_history: allure-history
+          keep_reports: 5
