@@ -42,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: allure-report-artifact
-          path: target/allure-report
+          path: target/site/allure-maven-plugin
 
   report:
 
