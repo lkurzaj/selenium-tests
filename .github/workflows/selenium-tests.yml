@@ -39,7 +39,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: allure-results
-          path: target/allure-results
+          path: allure-results
           retention-days: 10
 
   report:

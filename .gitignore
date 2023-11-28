@@ -3,3 +3,4 @@
 target/
 log/
 selenium-tests.iml
+allure-results/
