@@ -75,6 +75,7 @@
       <artifactId>selenium-chrome-driver</artifactId>
       <version>4.15.0</version>
     </dependency>
+
   </dependencies>
 
   <build>
