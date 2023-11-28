@@ -18,7 +18,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean compile --file pom.xml
+      run: mvn clean compile
 
   test:
 
@@ -26,9 +26,9 @@ jobs:
 
     steps:
       - name: Build with Maven
-        run: mvn clean compile --file pom.xml
+        run: mvn clean compile
       - name: Test with selenium
-        run: mvn test allure:report --file pom.xml
+        run: mvn test allure:report
 
   report:
 
