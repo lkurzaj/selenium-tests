@@ -11,6 +11,8 @@ public enum CustomWebDriver {
         @Override
         public ICustomWebDriver getCustomWebDriver() {
                 ChromeOptions options = new ChromeOptions();
+            options.addArguments("--no-sandbox");
+                options.addArguments("--headless");
                 return new CustomChromeWebDriver(options);
         }
 
