@@ -45,6 +45,6 @@ jobs:
     needs: test
     steps:
       - name: Deploy 🚀
-          uses: JamesIves/github-pages-deploy-action@v4
-          with:
-            folder: target/site/allure-maven-plugin
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: target/site/allure-maven-plugin
