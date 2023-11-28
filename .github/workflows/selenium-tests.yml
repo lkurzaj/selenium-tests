@@ -44,7 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v2
