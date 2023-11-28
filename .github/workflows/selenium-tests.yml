@@ -44,7 +44,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: explore
+      - run: ls
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: target/site/allure-maven-plugin
+          folder: target/site
