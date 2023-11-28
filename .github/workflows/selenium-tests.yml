@@ -2,7 +2,7 @@ name: Java CI with Maven - selenium tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
