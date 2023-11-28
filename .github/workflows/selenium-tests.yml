@@ -41,7 +41,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: allure-report-artifact
+          name: github-pages
           path: target/site/allure-maven-plugin
 
   report:
@@ -51,5 +51,3 @@ jobs:
     steps:
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v2
-        with:
-          artifact_name: allure-report-artifact
