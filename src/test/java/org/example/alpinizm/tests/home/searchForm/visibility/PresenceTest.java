@@ -68,7 +68,7 @@ public class PresenceTest extends BaseTest {
     @Test
     @Epic(VISIBILITY)
     @DisplayName("Check 'Search Button' visibility of Search Form on Home Page")
-    public void checkIfSearchFormearchButtonIsVisible() {
+    public void checkIfSearchFormSearchButtonIsVisible() {
         assertThat(searchPropertiesForm.isSearchButtonVisible())
                 .as("Search Button is not visible").isTrue();
     }

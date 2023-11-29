@@ -31,20 +31,22 @@ public class SearchPropertiesForm {
     }
 
     public boolean isTitleLabelVisible() {
-        formTitleLabel.waitForElementToBeVisible();
+        formTitleLabel.waitForElementToBeVisibleSilently();
         return formTitleLabel.isDisplayed();
     }
 
     public boolean isSubTitleLabelVisible() {
-        formSubtitleLabel.waitForElementToBeVisible();
+        formSubtitleLabel.waitForElementToBeVisibleSilently();
         return formSubtitleLabel.isDisplayed();
     }
 
     public boolean isSearchButtonVisible() {
+        searchButton.waitForElementToBeVisibleSilently();
         return searchButton.isDisplayed();
     }
 
     public boolean isLocationDropdownVisible() {
+        locationDropdown.waitForElementToBeVisibleSilently();
         return locationDropdown.isDisplayed();
     }
 
