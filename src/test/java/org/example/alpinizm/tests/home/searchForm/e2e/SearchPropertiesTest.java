@@ -1,6 +1,7 @@
 package org.example.alpinizm.tests.home.searchForm.e2e;
 
 import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.example.alpinizm.BaseTest;
 import org.example.alpinizm.pages.home.HomePage;
 import org.example.alpinizm.pages.home.SearchPropertiesForm;
@@ -43,7 +44,8 @@ public class SearchPropertiesTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @Epic("Search with all parameters provided")
+    @Epic("E2E")
+    @Feature("Search using main form")
     @ArgumentsSource(SearchPropertiesFormDataProvider.class)
     public void searchProperties(String location, LocalDate checkInDate, LocalDate checkOutDate,
                                  int guestsNumber, boolean pets, List<String> amenities, int foundItemsNumber) {

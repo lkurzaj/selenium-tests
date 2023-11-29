@@ -24,11 +24,23 @@ public class CheckBox extends BaseElement {
         return checkboxes.getElementByText(txt).isSelected();
     }
 
+    public boolean isCheckBoxSelectedByIndex(int idx) {
+        return checkboxes.getElementByIndex(idx).isSelected();
+    }
+
     public void selectCheckBoxesByText(String txt) {
         if (isCheckBoxSelectedByText(txt)) {
             LOG.info("Checkbox with text '" + txt + "' was already selected. Skipping clicking.");
         } else {
-            checkboxes.getElementByText(txt).click();
+            checkboxes.clickElementByText(txt);
+        }
+    }
+
+    public void selectCheckBoxesByIndex(int idx) {
+        if (isCheckBoxSelectedByIndex(idx)) {
+            LOG.info("Checkbox with index '" + idx + "' was already selected. Skipping clicking.");
+        } else {
+            checkboxes.clickElementByIndex(idx);
         }
     }
 

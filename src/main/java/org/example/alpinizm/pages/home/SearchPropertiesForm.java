@@ -4,15 +4,13 @@ import org.example.alpinizm.pages.home.widgets.CalendarPopup;
 import org.example.alpinizm.pages.home.widgets.GuestsSelectionPopup;
 import org.example.alpinizm.pages.search.SearchResultsPage;
 import org.example.alpinizm.selenium.WebDriverManager;
-import org.example.alpinizm.selenium.webelements.Button;
-import org.example.alpinizm.selenium.webelements.CheckBox;
-import org.example.alpinizm.selenium.webelements.Dropdown;
-import org.example.alpinizm.selenium.webelements.Label;
+import org.example.alpinizm.selenium.webelements.*;
 import org.openqa.selenium.By;
 
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SearchPropertiesForm {
     private static final Label formTitleLabel = WebDriverManager.getDriver().label(By.cssSelector(".cMptV"));

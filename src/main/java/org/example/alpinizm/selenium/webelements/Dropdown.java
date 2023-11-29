@@ -27,7 +27,7 @@ public class Dropdown extends BaseElement {
 
     public void selectOptionByText(String txt){
         this.click();
-        this.options.getElementsCount();
+        new Label(By.cssSelector(".__Popover")).isDisplayed();
         this.options.clickElementByText(txt);
         Dropdown.LOG.debug("Checking if option with text '" + txt + "' was set in ..:: " + this.getDescription() + " ::.. ");
         if(!selectedOptionLabel.getAttributeValue().contentEquals(txt)){

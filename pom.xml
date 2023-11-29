@@ -164,6 +164,7 @@
         <version>2.12.0</version>
         <configuration>
           <reportVersion>2.12.0</reportVersion>
+          <resultsDirectory>allure-results</resultsDirectory>
         </configuration>
       </plugin>
     </plugins>

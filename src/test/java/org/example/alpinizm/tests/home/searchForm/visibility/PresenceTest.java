@@ -1,6 +1,7 @@
 package org.example.alpinizm.tests.home.searchForm.visibility;
 
 import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.example.alpinizm.BaseTest;
 import org.example.alpinizm.pages.home.HomePage;
 import org.example.alpinizm.pages.home.SearchPropertiesForm;
