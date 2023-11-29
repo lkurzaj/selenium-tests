@@ -10,11 +10,10 @@ import org.openqa.selenium.By;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SearchPropertiesForm {
-    private static final Label formTitleLabel = WebDriverManager.getDriver().label(By.cssSelector(".cMptV"));
-    private static final Label formSubtitleLabel = WebDriverManager.getDriver().label(By.cssSelector(".kMthTr"));
+    private static final Label formTitleLabel = WebDriverManager.getDriver().label(By.cssSelector("h1.cMptV"));
+    private static final Label formSubtitleLabel = WebDriverManager.getDriver().label(By.cssSelector("p.kMthTr"));
     private static final Button searchButton = WebDriverManager.getDriver().button(By.cssSelector(".sc-jVSGNQ .sc-giAqHp"));
     private static final Dropdown locationDropdown = WebDriverManager.getDriver()
             .dropdown(By.cssSelector(".sc-jYKCQm .sc-eGJWMs"), By.cssSelector(".sc-iXquSf"), By.cssSelector("input.locationPicker"));
@@ -32,10 +31,12 @@ public class SearchPropertiesForm {
     }
 
     public boolean isTitleLabelVisible() {
+        formTitleLabel.waitForElementToBeVisible();
         return formTitleLabel.isDisplayed();
     }
 
     public boolean isSubTitleLabelVisible() {
+        formSubtitleLabel.waitForElementToBeVisible();
         return formSubtitleLabel.isDisplayed();
     }
 
@@ -67,7 +68,7 @@ public class SearchPropertiesForm {
 
     public boolean isGuestSelectorVisible() {
         guestsButton.click();
-        return new GuestsSelectionPopup().isPopupVisible();
+        return new GuestsSelectionPopup().waitForPopupToBeVisible().isPopupVisible();
     }
 
     public String getTitleLabelText() {

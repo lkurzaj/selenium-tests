@@ -16,7 +16,7 @@
     <maven.compiler.source>1.11</maven.compiler.source>
     <maven.compiler.target>1.11</maven.compiler.target>
     <aspectj.version>1.9.20.1</aspectj.version>
-    <forkCount>2</forkCount>
+    <forkCount>5</forkCount>
   </properties>
 
   <dependencies>
@@ -112,8 +112,9 @@
             <testFailureIgnore>true</testFailureIgnore>
             <systemPropertyVariables>
               <junit.jupiter.execution.parallel.enabled>true</junit.jupiter.execution.parallel.enabled>
-              <junit.jupiter.execution.parallel.mode.classes.deafult>concurent</junit.jupiter.execution.parallel.mode.classes.deafult>
+              <junit.jupiter.execution.parallel.mode.classes.deafult>concurrent</junit.jupiter.execution.parallel.mode.classes.deafult>
               <junit.jupiter.execution.parallel.config.fixed.parallelism>${forkCount}</junit.jupiter.execution.parallel.config.fixed.parallelism>
+              <junit.jupiter.execution.parallel.config.strategy>fixed</junit.jupiter.execution.parallel.config.strategy>
             </systemPropertyVariables>
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
