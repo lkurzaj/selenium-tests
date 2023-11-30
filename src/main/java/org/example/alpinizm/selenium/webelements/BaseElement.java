@@ -15,7 +15,7 @@ public class BaseElement {
 
     private static final String WAITING_TIME_LOG_TEMPLATE = "Waiting for element %s ..:: %s ::..";
     private AlpinizmLogger LOG;
-    private WebDriverWait wait;
+    private Duration maxTimeout;
     protected By webElementSelector;
     protected WebElement webElement;
     Instant initTime;
@@ -27,19 +27,19 @@ public class BaseElement {
     protected BaseElement(By selector, Class<?> clazz, int maxTimeout) {
         this.webElementSelector = selector;
         this.LOG = AlpinizmLogger.getLogger(clazz);
-        this.wait = new WebDriverWait(WebDriverManager.getDriver(), Duration.ofSeconds(maxTimeout));
+        this.maxTimeout = Duration.ofSeconds(maxTimeout);
     }
 
     protected BaseElement(WebElement elem, Class<?> clazz) {
         this.webElement = elem;
         this.LOG = AlpinizmLogger.getLogger(clazz);
-        this.wait = new WebDriverWait(WebDriverManager.getDriver(), Duration.ofSeconds(ICustomWebDriver.MAX_TIMEOUT_SECONDS));
+        this.maxTimeout = Duration.ofSeconds(ICustomWebDriver.MAX_TIMEOUT_SECONDS);
     }
 
     private WebElement getElementBySelector() {
         String logMessage = String.format(WAITING_TIME_LOG_TEMPLATE, "presence", this.webElementSelector.toString());
         Instant initTime = Instant.now();
-        this.webElement = wait.until(ExpectedConditions.presenceOfElementLocated(this.webElementSelector));
+        this.webElement = getWait().until(ExpectedConditions.presenceOfElementLocated(this.webElementSelector));
         LOG.logWaitForElementTime(logMessage, initTime);
         return this.webElement;
     }
@@ -68,10 +68,14 @@ public class BaseElement {
         }
     }
 
+    private WebDriverWait getWait() {
+        return new WebDriverWait(WebDriverManager.getDriver(), maxTimeout);
+    }
+
     public void waitForElementToBePresent() {
         String logMessage = String.format(WAITING_TIME_LOG_TEMPLATE, "present", this.getDescription());
         this.initTime = Instant.now();
-        this.webElement = wait.until(ExpectedConditions.presenceOfElementLocated(this.webElementSelector));
+        this.webElement = getWait().until(ExpectedConditions.presenceOfElementLocated(this.webElementSelector));
         LOG.logWaitForElementTime(logMessage, this.initTime);
     }
 
@@ -79,9 +83,9 @@ public class BaseElement {
         String logMessage = String.format(WAITING_TIME_LOG_TEMPLATE, "visible", this.getDescription());
         this.initTime = Instant.now();
         if (this.webElementSelector == null) {
-            this.webElement = wait.until(ExpectedConditions.visibilityOf(this.webElement));
+            this.webElement = getWait().until(ExpectedConditions.visibilityOf(this.webElement));
         } else {
-            this.webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(this.webElementSelector));
+            this.webElement = getWait().until(ExpectedConditions.visibilityOfElementLocated(this.webElementSelector));
         }
 
         LOG.logWaitForElementTime(logMessage, this.initTime);
@@ -103,9 +107,9 @@ public class BaseElement {
         this.initTime = Instant.now();
 
         if (this.webElementSelector == null) {
-            wait.until(ExpectedConditions.invisibilityOf(this.webElement));
+            getWait().until(ExpectedConditions.invisibilityOf(this.webElement));
         } else {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated((this.webElementSelector)));
+            getWait().until(ExpectedConditions.invisibilityOfElementLocated((this.webElementSelector)));
         }
 
         LOG.logWaitForElementTime(logMessage, this.initTime);
@@ -126,9 +130,9 @@ public class BaseElement {
         String logMessage = String.format(WAITING_TIME_LOG_TEMPLATE, "clickable", this.getDescription());
         this.initTime = Instant.now();
         if (this.webElementSelector == null) {
-            this.webElement = wait.until(ExpectedConditions.elementToBeClickable(this.webElement));
+            this.webElement = getWait().until(ExpectedConditions.elementToBeClickable(this.webElement));
         } else {
-            this.webElement = wait.until(ExpectedConditions.elementToBeClickable(this.webElementSelector));
+            this.webElement = getWait().until(ExpectedConditions.elementToBeClickable(this.webElementSelector));
         }
         LOG.logWaitForElementTime(logMessage, this.initTime);
     }

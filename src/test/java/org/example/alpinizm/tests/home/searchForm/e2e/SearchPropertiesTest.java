@@ -4,12 +4,8 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.example.alpinizm.BaseTest;
 import org.example.alpinizm.pages.home.HomePage;
-import org.example.alpinizm.pages.home.SearchPropertiesForm;
 import org.example.alpinizm.pages.search.SearchResultsPage;
 import org.example.alpinizm.selenium.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -36,12 +32,6 @@ class SearchPropertiesFormDataProvider implements ArgumentsProvider {
 public class SearchPropertiesTest extends BaseTest {
 
     private static final HomePage homePage = new HomePage();
-
-    @BeforeEach
-    public void beforeEach() {
-        WebDriverManager.getDriver().manage().deleteAllCookies();
-        homePage.load();
-    }
 
     @ParameterizedTest
     @Epic("E2E")

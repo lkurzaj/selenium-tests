@@ -18,6 +18,7 @@ public class CalendarPopup {
             .label(By.cssSelector(String.format(".%s .sc-dFRpbK", baseSelectorClass)));
 
     public boolean isPopupVisible() {
+        popup.waitForElementToBeVisibleSilently();
         return popup.isDisplayed();
     }
 

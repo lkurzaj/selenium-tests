@@ -17,11 +17,6 @@ public class PresenceTest extends BaseTest {
     private static final SearchPropertiesForm searchPropertiesForm = homePage.searchPropertiesForm();
     private static final String VISIBILITY = "Visibility";
 
-    @BeforeAll
-    public static void beforeAll() {
-        new HomePage().load();
-    }
-
     @Test
     @Epic(VISIBILITY)
     @DisplayName("Check 'Title Label' visibility of Search Form on Home Page")

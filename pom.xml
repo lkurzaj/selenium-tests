@@ -75,6 +75,12 @@
       <artifactId>selenium-chrome-driver</artifactId>
       <version>4.15.0</version>
     </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-java-commons</artifactId>
+      <version>2.12.0</version>
+      <scope>compile</scope>
+    </dependency>
 
   </dependencies>
 
@@ -105,17 +111,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
           <configuration>
-            <parallel>classes</parallel>
-            <threadCount>1</threadCount>
-            <forkCount>${forkCount}</forkCount>
-            <reuseForks>true</reuseForks>
-            <testFailureIgnore>true</testFailureIgnore>
-            <systemPropertyVariables>
-              <junit.jupiter.execution.parallel.enabled>true</junit.jupiter.execution.parallel.enabled>
-              <junit.jupiter.execution.parallel.mode.classes.deafult>concurrent</junit.jupiter.execution.parallel.mode.classes.deafult>
-              <junit.jupiter.execution.parallel.config.fixed.parallelism>${forkCount}</junit.jupiter.execution.parallel.config.fixed.parallelism>
-              <junit.jupiter.execution.parallel.config.strategy>fixed</junit.jupiter.execution.parallel.config.strategy>
-            </systemPropertyVariables>
+            <parallel>methods</parallel>
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
@@ -165,7 +161,7 @@
         <version>2.12.0</version>
         <configuration>
           <reportVersion>2.12.0</reportVersion>
-          <resultsDirectory>allure-results</resultsDirectory>
+          <resultsDirectory>../allure-results</resultsDirectory>
         </configuration>
       </plugin>
     </plugins>

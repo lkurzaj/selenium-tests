@@ -1,5 +1,6 @@
 package org.example.alpinizm.pages;
 
+import io.qameta.allure.Attachment;
 import org.example.alpinizm.core.logger.AlpinizmLogger;
 import org.example.alpinizm.selenium.WebDriverManager;
 import org.example.alpinizm.selenium.webdriver.ICustomWebDriver;

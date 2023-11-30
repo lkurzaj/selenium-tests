@@ -3,13 +3,15 @@ package org.example.alpinizm.selenium.webdriver;
 import org.example.alpinizm.core.properties.AlpinizmConstants;
 import org.example.alpinizm.selenium.webelements.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 
 public interface ICustomWebDriver extends WebDriver {
 
-    int MAX_TIMEOUT_MS = 5_000;
+    int MAX_TIMEOUT_MS = 20_000;
     int MAX_TIMEOUT_SECONDS = MAX_TIMEOUT_MS/1000;
     int TIMER_INTERVAL_MS = 50;
 
@@ -42,4 +44,7 @@ public interface ICustomWebDriver extends WebDriver {
         return new WebElementList(selector);
     }
 
+    default byte[] takeScreenshot() {
+        return ((TakesScreenshot) this).getScreenshotAs(OutputType.BYTES);
+    }
 }

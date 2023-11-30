@@ -10,6 +10,7 @@ public class Dropdown extends BaseElement {
 
     private WebElementList options;
     private Label selectedOptionLabel;
+    private By optionSelector;
 
     public Dropdown(By selector){
         super(selector, Dropdown.class);
@@ -22,12 +23,13 @@ public class Dropdown extends BaseElement {
     public Dropdown(By selector, By optionSelector, By selectableOptionSelector){
         super(selector, Dropdown.class);
         this.options = new WebElementList(optionSelector);
+        this.optionSelector = optionSelector;
         this.selectedOptionLabel = new Label(selectableOptionSelector);
     }
 
     public void selectOptionByText(String txt){
         this.click();
-        new Label(By.cssSelector(".__Popover")).isDisplayed();
+        new Label(optionSelector).waitForElementToBeVisible();
         this.options.clickElementByText(txt);
         Dropdown.LOG.debug("Checking if option with text '" + txt + "' was set in ..:: " + this.getDescription() + " ::.. ");
         if(!selectedOptionLabel.getAttributeValue().contentEquals(txt)){

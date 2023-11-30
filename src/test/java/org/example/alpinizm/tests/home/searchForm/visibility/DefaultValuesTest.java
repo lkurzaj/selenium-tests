@@ -5,7 +5,6 @@ import org.example.alpinizm.BaseTest;
 import org.example.alpinizm.pages.home.HomePage;
 import org.example.alpinizm.pages.home.SearchPropertiesForm;
 import org.example.alpinizm.pages.home.widgets.GuestsSelectionPopup;
-import org.example.alpinizm.selenium.WebDriverManager;
 import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
@@ -18,14 +17,8 @@ public class DefaultValuesTest extends BaseTest {
     private static final SearchPropertiesForm searchPropertiesForm = homePage.searchPropertiesForm();
     private static final String DEFAULT_DATA = "Default Data";
 
-    @BeforeAll
-    public static void beforeAll() {
-        new HomePage().load();
-    }
-
     @Test
     @Epic(DEFAULT_DATA)
-
     @DisplayName("Check 'Title Label' default values of Search Form on Home Page")
     public void checkDefaultValuesForTitleLabel() {
         assertThat(searchPropertiesForm.getTitleLabelText()).isEqualTo("ASD");
@@ -63,7 +56,8 @@ public class DefaultValuesTest extends BaseTest {
     @Epic(DEFAULT_DATA)
     @DisplayName("Check 'Guests Field' default values of Search Form on Home Page")
     public void checkDefaultValuesForGuestsField() {
-        GuestsSelectionPopup guestsSelectionPopup = searchPropertiesForm.guestsSelectionPopup();
+        GuestsSelectionPopup guestsSelectionPopup = searchPropertiesForm.clickGuestsText();
+
         assertThat(guestsSelectionPopup.getSelectedGuestsNumberLabelText()).isEqualTo("1");
         assertThat(guestsSelectionPopup.isNoRadioButtonSelected()).isTrue();
     }
